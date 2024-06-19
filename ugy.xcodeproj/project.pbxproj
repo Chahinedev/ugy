@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF385FA52C22C01200FCEA9A /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF385FA42C22C01200FCEA9A /* SwiftUIView.swift */; };
+		DF385FA72C22C06100FCEA9A /* background.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF385FA62C22C06100FCEA9A /* background.swift */; };
 		DF4209FA2C1F1756000D881D /* ugyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4209F92C1F1756000D881D /* ugyApp.swift */; };
 		DF4209FC2C1F1756000D881D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4209FB2C1F1756000D881D /* ContentView.swift */; };
 		DF4209FE2C1F1756000D881D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4209FD2C1F1756000D881D /* Item.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF385FA42C22C01200FCEA9A /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		DF385FA62C22C06100FCEA9A /* background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background.swift; sourceTree = "<group>"; };
 		DF4209F62C1F1756000D881D /* ugy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ugy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF4209F92C1F1756000D881D /* ugyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ugyApp.swift; sourceTree = "<group>"; };
 		DF4209FB2C1F1756000D881D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				DF420A022C1F1759000D881D /* Preview Assets.xcassets */,
+				DF385FA42C22C01200FCEA9A /* SwiftUIView.swift */,
+				DF385FA62C22C06100FCEA9A /* background.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -142,7 +148,9 @@
 			files = (
 				DF4209FC2C1F1756000D881D /* ContentView.swift in Sources */,
 				DF4209FE2C1F1756000D881D /* Item.swift in Sources */,
+				DF385FA52C22C01200FCEA9A /* SwiftUIView.swift in Sources */,
 				DF4209FA2C1F1756000D881D /* ugyApp.swift in Sources */,
+				DF385FA72C22C06100FCEA9A /* background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

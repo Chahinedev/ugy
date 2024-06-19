@@ -6,56 +6,118 @@
 //
 
 import SwiftUI
-import SwiftData
+import UIKit
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State private var test = 1
+    @State private var batteryLevel: Float = UIDevice.current.batteryLevel
+    @State private var width: CGFloat = 0
+    @State private var height: CGFloat = 0
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        GeometryReader { geometry in
+            Background(geometry: geometry)
+            
+            VStack {
+                Spacer()
+                BatteryView(batteryLevel: $batteryLevel)
+                    .frame(width: geometry.size.width)
+                    .background(Color.gray.opacity(0.7))
+                    .padding()
+                
+                
+                HStack {
+                    Text("Yone")
+                    Image(systemName: "globe")
+                    Text("test")
+                    Button(action: {
+                        test += 1
+                        print(test)
+                    }) {
+                        Text("Test: \(test)")
+                    }
+                    Button(action: {
+                        testFunc()
+                    }) {
+                        Text("Test: \(test)")
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.25)
+                .background(Color.green.opacity(0.7))
+                
+                HStack {
+                    Text("Yone")
+                    Image(systemName: "globe")
+                    Text("test")
+                    Button(action: {
+                        test += 1
+                        print(test)
+                    }) {
+                        Text("Test: \(test)")
+                    }
+                    Button(action: {
+                        testFunc()
+                    }) {
+                        Text("Test: \(test)")
                     }
                 }
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.60)
+                .background(Color.gray.opacity(0.7))
+                
+                HStack {
+                    Text("Yone")
+                    Image(systemName: "globe")
+                    Text("test")
+                    Button(action: {
+                        test += 1
+                        print(test)
+                    }) {
+                        Text("Test: \(test)")
+                    }
+                    Button(action: {
+                        testFunc()
+                    }) {
+                        Text("Test: \(test)")
+                    }
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.15)
+                .background(Color.red.opacity(0.7))
             }
-        } detail: {
-            Text("Select an item")
+            .onAppear {
+                UIDevice.current.isBatteryMonitoringEnabled = true
+                self.batteryLevel = UIDevice.current.batteryLevel
+                NotificationCenter.default.addObserver(forName: UIDevice.batteryLevelDidChangeNotification, object: nil, queue: .main) { _ in
+                    self.batteryLevel = UIDevice.current.batteryLevel
+                }
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
+}
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+struct BatteryView: View {
+    @Binding var batteryLevel: Float
+    
+    var body: some View {
+        Spacer()
+        VStack {
+            if batteryLevel >= 0 {
+                Text("\(Int(batteryLevel * 100))%")
+                    .font(.largeTitle)
+            } else {
+                Text("Battery level unavailable")
+                    .font(.largeTitle)
             }
         }
     }
 }
 
+public func testFunc() -> Void {
+    var msg = "wesh"
+    msg += "man"
+    print(msg)
+}
+
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
